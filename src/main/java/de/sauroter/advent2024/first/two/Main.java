@@ -1,7 +1,7 @@
 package de.sauroter.advent2024.first.two;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -16,12 +16,11 @@ public class Main {
         main.loop(scanner);
 
         scanner.close();
-
     }
 
     void loop(final Scanner scanner) {
 
-        final var left = new ArrayList<Integer>();
+        final var left = new HashSet<Integer>();
         final var right = new ArrayList<Integer>();
 
         while (scanner.hasNextLine()) {
@@ -31,31 +30,16 @@ public class Main {
             right.add(Integer.parseInt(split[1]));
         }
 
-
-        left.sort(Integer::compare);
-        right.sort(Integer::compare);
-
         final var result = calculateSimilarity(left, right);
 
         System.out.println(result);
     }
 
-    private static int calculateSimilarity(final ArrayList<Integer> left, final ArrayList<Integer> right) {
+    private static int calculateSimilarity(final HashSet<Integer> left, final ArrayList<Integer> right) {
         var result = 0;
-
-        for (final Integer leftElement : left) {
-            var place = Collections.binarySearch(right, leftElement);
-            if (place >= 0) {
-
-                while (Objects.equals(leftElement, right.get(place))) {
-                    place--;
-                }
-
-                place++;
-                while ((Objects.equals(leftElement, right.get(place)))) {
-                    place++;
-                    result += leftElement;
-                }
+        for (final Integer i : right) {
+            if (left.contains(i)) {
+                result += i;
             }
         }
         return result;
