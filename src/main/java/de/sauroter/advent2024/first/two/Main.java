@@ -52,12 +52,10 @@ public class Main {
                 }
 
                 place++;
-                var count = 0;
                 while ((Objects.equals(leftElement, right.get(place)))) {
                     place++;
-                    count++;
+                    result += leftElement;
                 }
-                result += leftElement * count;
             }
         }
         return result;
