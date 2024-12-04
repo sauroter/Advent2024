@@ -65,7 +65,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("Right: " + a + " " + b);
             return 1;
         }
 
@@ -79,7 +78,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("left: " + a + " " + b);
             return 1;
         }
 
@@ -93,7 +91,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("up: " + a + " " + b);
             return 1;
         }
 
@@ -107,8 +104,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("down: " + a + " " + b);
-
             return 1;
         }
 
@@ -122,8 +117,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("upright: " + a + " " + b);
-
             return 1;
         }
 
@@ -137,7 +130,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("downright: " + a + " " + b);
             return 1;
         }
 
@@ -151,8 +143,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("downleft: " + a + " " + b);
-
             return 1;
         }
 
@@ -166,8 +156,6 @@ public class Main {
                     return 0;
                 }
             }
-            System.out.println("upleft: " + a + " " + b);
-
             return 1;
         }
 
