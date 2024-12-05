@@ -14,7 +14,6 @@ public class Main {
         main.loop(scanner);
 
         scanner.close();
-
     }
 
     void loop(final Scanner scanner) {
