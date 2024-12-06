@@ -10,6 +10,7 @@ public class Main {
         final var scanner = new Scanner(Objects.requireNonNull(inputStream));
         final var main = new Main();
 
+
         main.loop(scanner);
 
         scanner.close();
