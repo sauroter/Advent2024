@@ -55,38 +55,33 @@ public class Main {
         System.out.println(sum);
     }
 
-    private static class CorrectionComparator implements Comparator<Integer> {
-        final HashMap<Integer, Set<Integer>> rules;
-
-        private CorrectionComparator(final HashMap<Integer, Set<Integer>> rules) {
-            this.rules = rules;
-        }
+    private record CorrectionComparator(HashMap<Integer, Set<Integer>> rules) implements Comparator<Integer> {
 
 
         @Override
-        public int compare(final Integer o1, final Integer o2) {
-            if (Objects.equals(o1, o2)) {
+            public int compare(final Integer o1, final Integer o2) {
+                if (Objects.equals(o1, o2)) {
+                    return 0;
+                }
+                final var ruleSetO1 = rules.get(o1);
+                if (ruleSetO1 != null && ruleSetO1.contains(o2)) {
+                    return -1;
+                }
+                final var ruleSetO2 = rules.get(o2);
+                if (ruleSetO2 != null && ruleSetO2.contains(o1)) {
+                    return 1;
+                }
+
                 return 0;
             }
-            final var ruleSetO1 = rules.get(o1);
-            if (ruleSetO1 != null && ruleSetO1.contains(o2)) {
-                return -1;
-            }
-            final var ruleSetO2 = rules.get(o2);
-            if (ruleSetO2 != null && ruleSetO2.contains(o1)) {
-                return 1;
-            }
 
-            return 0;
-        }
-
-        boolean isSorted(final List<Integer> corrections) {
-            for (int i = 1; i < corrections.size(); i++) {
-                if (this.compare(corrections.get(i - 1), corrections.get(i)) > 0) {
-                    return false; // Not sorted
+            boolean isSorted(final List<Integer> corrections) {
+                for (int i = 1; i < corrections.size(); i++) {
+                    if (this.compare(corrections.get(i - 1), corrections.get(i)) > 0) {
+                        return false; // Not sorted
+                    }
                 }
+                return true;
             }
-            return true;
         }
-    }
 }

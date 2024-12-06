@@ -105,14 +105,15 @@ public class Maze {
 
     public int detectLoops() {
         var count = 0;
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                final var tmp = new Maze(this);
-                tmp.injectObstacle(x, y);
-                final var solve = tmp.solve();
-                if (solve < 0) {
-                    count++;
-                }
+        final var solved = new Maze(this);
+        solved.solve();
+
+        for (final Position position : solved.visited) {
+            final var tmp = new Maze(this);
+            tmp.injectObstacle(position.x, position.y);
+            final var solve = tmp.solve();
+            if (solve < 0) {
+                count++;
             }
         }
         return count;
