@@ -62,6 +62,9 @@ public class Main {
 
             for (int i = 0; i < operations.length; i++) {
                 current = operations[i].applyAsLong(current, numbers[i + 1]);
+                if (current > target) {
+                    break;
+                }
             }
             if (current == target) {
                 System.out.println(target);
