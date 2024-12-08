@@ -21,7 +21,7 @@ public class Main {
     void loop(final Scanner scanner) {
         final var antennaMatrix = new AntennaMatrix(scanner);
 
-        final var positions = antennaMatrix.calculateAntidnodesWithHarmonics();
+        final var positions = antennaMatrix.calculateAntinodesWithHarmonics();
 
         System.out.println(positions);
 

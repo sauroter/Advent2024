@@ -50,7 +50,7 @@ public class AntennaMatrix {
         return position.row >= 0 && position.row < height && position.col >= 0 && position.col < width;
     }
 
-    public Set<Position> calculateAntidnodes() {
+    public Set<Position> calculateAntinodes() {
         for (final List<Position> antennaPositions : antennas.values()) {
             if (antennaPositions.size() < 2) {
                 continue;
@@ -81,7 +81,7 @@ public class AntennaMatrix {
         return antinodes;
     }
 
-    public Set<Position> calculateAntidnodesWithHarmonics() {
+    public Set<Position> calculateAntinodesWithHarmonics() {
         for (final List<Position> antennaPositions : antennas.values()) {
             if (antennaPositions.size() < 2) {
                 continue;
